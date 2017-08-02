@@ -27,10 +27,16 @@ import com.macroyau.blue2serial.BluetoothSerialListener;
 import java.util.ArrayList;
 
 /**
- * This is an example Bluetooth terminal application built using the Blue2Serial library.
  *
- * @author Macro Yau
+ *  This Bluetooth app uses the Blue2Serial library by Macro Yau
+ *
  */
+
+
+
+// POLISHED BRANCH
+
+
 public class TerminalActivity extends AppCompatActivity
         implements BluetoothSerialListener, BluetoothDeviceListDialog.OnDeviceSelectedListener {
 
