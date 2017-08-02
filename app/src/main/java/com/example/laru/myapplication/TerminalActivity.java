@@ -167,8 +167,8 @@ public class TerminalActivity extends AppCompatActivity
 
                         if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) allInputs.add((CheckBox) linLayouts.get(i).getChildAt(j));
 
-                        if (linLayouts.get(i).getChildAt(j) instanceof TimePicker)
-                            allInputs.add((TimePicker) linLayouts.get(i).getChildAt(j));
+                        if (linLayouts.get(i).getChildAt(j) instanceof TextView)
+                            allInputs.add((TextView) linLayouts.get(i).getChildAt(j));
                     }
 
                 }
@@ -199,11 +199,18 @@ public class TerminalActivity extends AppCompatActivity
                                 tramaFormateada += "1";*/
                         }
                     } else {
-                        TimePicker tiempo = (TimePicker) allInputs.get(i);
+
+                        TextView tiempo = (TextView) allInputs.get(i);
+
+                        if(tiempo.getId()+""=="veranoSeparador" || tiempo.getId()+"" == "inviernoSeparador") {
+                            i++;
+                            continue;
+                        }
+
                         String subtrama = "";
-                        subtrama+=tiempo.getCurrentHour();
-                        subtrama+=tiempo.getCurrentMinute();
-                        if(checked && subtrama!="") {
+                        subtrama+=tiempo.getText().toString().replaceAll("[^0-9]","");
+
+                        if(checked && subtrama!="___") {
                             trama+="1";
                             tramaFormateada+="1";
                             checked=false;
@@ -227,8 +234,8 @@ public class TerminalActivity extends AppCompatActivity
 
                 AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
                 alertDialog.setTitle("Alert");
-                alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
-                //alertDialog.setMessage("Inputs capturados : " +allInputs.size());
+                //alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
+                alertDialog.setMessage("Inputs capturados : " +allInputs); // todo Se repiten los checkboxes en el array con los TextView, investigar
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -253,7 +260,8 @@ public class TerminalActivity extends AppCompatActivity
 
     public String guardar ( String hora , String minuto) {
         String resultado = hora+":"+minuto;
-        return resultado;
+        String resultadoLimpio = resultado.replaceAll("[^0-9]","");
+        return resultadoLimpio;
     }
 
 
