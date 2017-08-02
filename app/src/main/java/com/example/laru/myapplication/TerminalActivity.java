@@ -34,7 +34,7 @@ import java.util.ArrayList;
 
 
 
-// POLISHED BRANCH
+// QUICK BRANCH
 
 
 public class TerminalActivity extends AppCompatActivity
