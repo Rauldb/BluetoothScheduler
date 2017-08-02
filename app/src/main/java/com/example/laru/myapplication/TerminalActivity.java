@@ -27,6 +27,7 @@ import java.sql.Time;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import android.app.TimePickerDialog;
+import android.view.View.OnClickListener;
 
 
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
@@ -65,6 +66,33 @@ public class TerminalActivity extends AppCompatActivity
 
     private boolean crlf = false;
 
+    private OnClickListener listener    =   new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Calendar mcurrentTime = Calendar.getInstance();
+            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+            int minute = mcurrentTime.get(Calendar.MINUTE);
+            final TextView picker = (TextView) v;
+
+            TimePickerDialog mTimePicker;
+            mTimePicker = new TimePickerDialog(TerminalActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute ) {
+
+                    String hora = new DecimalFormat("00").format(selectedHour);
+                    String minuto = new DecimalFormat("00").format(selectedMinute);
+                    hora = guardar(hora, minuto);
+                    picker.setText(hora);
+                }
+            }, hour, minute, true);
+            mTimePicker.setTitle("Select Time");
+            mTimePicker.show();
+
+        }
+    };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,29 +129,8 @@ public class TerminalActivity extends AppCompatActivity
 
                 if (picker != null) {
 
-                    picker.setOnClickListener(new View.OnClickListener() {
+                    picker.setOnClickListener(listener);
 
-                        @Override
-                        public void onClick(View v) {
-                            Calendar mcurrentTime = Calendar.getInstance();
-                            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
-                            int minute = mcurrentTime.get(Calendar.MINUTE);
-
-                            TimePickerDialog mTimePicker;
-                            mTimePicker = new TimePickerDialog(TerminalActivity.this, new TimePickerDialog.OnTimeSetListener() {
-                                @Override
-                                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
-                                    String hora = new DecimalFormat("00").format(selectedHour);
-                                    String minuto = new DecimalFormat("00").format(selectedMinute);
-                                    hora = guardar(hora, minuto);
-                                    picker.setText(hora);
-                                }
-                            }, hour, minute, true);
-                            mTimePicker.setTitle("Select Time");
-                            mTimePicker.show();
-
-                        }
-                    });
 
                 }
 
