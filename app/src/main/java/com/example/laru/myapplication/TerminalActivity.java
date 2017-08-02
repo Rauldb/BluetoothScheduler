@@ -14,10 +14,12 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.view.View;
+import android.widget.RelativeLayout;
 
 
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
@@ -69,7 +71,10 @@ public class TerminalActivity extends AppCompatActivity
                 String trama ="##V#";
                 String tramaFormateada="##V#";
                 EditText iniLunes = (EditText) findViewById(R.id.iniLunes);
+                RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
 
+
+                /*
                 allInputs.add((CheckBox) findViewById(R.id.checkLunes));
                 allInputs.add((EditText) findViewById(R.id.iniLunes));
                 allInputs.add ((EditText) findViewById(R.id.finLunes));
@@ -112,6 +117,8 @@ public class TerminalActivity extends AppCompatActivity
                 allInputs.add((CheckBox) findViewById(R.id.checkDomingo2));
                 allInputs.add ((EditText) findViewById(R.id.iniDomingo2));
                 allInputs.add ((EditText) findViewById(R.id.finDomingo2));
+
+                */
 
                 Boolean checked = false;
                 int checksCounter = 0;

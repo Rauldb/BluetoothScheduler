@@ -3,991 +3,992 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:focusableInTouchMode="true"
-    tools:context=".TerminalActivity">
-
-    <LinearLayout
-        android:id="@+id/cabeceraVerano"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:focusableInTouchMode="true"
+        tools:context=".TerminalActivity">
 
-        <EditText
+        <LinearLayout
+            android:id="@+id/cabeceraVerano"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Configuracion de Verano" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaLunes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/cabeceraVerano"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkLunes"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Lunes" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Configuracion de Verano" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/iniLunes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finLunes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaMartes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaLunes"
-        android:layout_marginTop="6dp"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkMartes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Martes" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniMartes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finMartes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaMiercoles"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaMartes"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkMiercoles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Miercoles" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniMiercoles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finMiercoles"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaJueves"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaMiercoles"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkJueves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jueves" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniJueves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finJueves"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaViernes"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaJueves"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkViernes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Viernes" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniViernes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finViernes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaSabado"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaViernes"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkSabado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sabado" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniSabado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finSabado"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaDomingo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaSabado"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkDomingo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Domingo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniDomingo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finDomingo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/cabeceraInvierno"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/filaDomingo"
-        android:orientation="horizontal">
-
-        <EditText
+        <LinearLayout
+            android:id="@+id/filaLunes"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Configuracion de Invierno" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaLunes2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/cabeceraInvierno"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkLunes2"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Lunes" />
+            android:layout_below="@+id/cabeceraVerano"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
+            <CheckBox
+                android:id="@+id/checkLunes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lunes" />
 
-        <EditText
-            android:id="@+id/iniLunes2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
+            <EditText
+                android:id="@+id/iniLunes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
 
-        <EditText
-            android:id="@+id/finLunes2"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finLunes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaMartes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaLunes"
             android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
             android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/filaMartes2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaLunes2"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkMartes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Martes" />
 
-        <CheckBox
-            android:id="@+id/checkMartes2"
-            android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniMartes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finMartes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaMiercoles"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Martes" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaMartes"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <CheckBox
+                android:id="@+id/checkMiercoles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Miercoles" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniMiercoles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finMiercoles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaJueves"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaMiercoles"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/iniMartes2"
-            android:layout_width="wrap_content"
+            <CheckBox
+                android:id="@+id/checkJueves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Jueves" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniJueves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finJueves"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaViernes"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaJueves"
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <CheckBox
+                android:id="@+id/checkViernes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Viernes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniViernes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finViernes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaSabado"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaViernes"
+            android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/finMartes2"
-            android:layout_width="wrap_content"
+            <CheckBox
+                android:id="@+id/checkSabado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sabado" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniSabado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finSabado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaDomingo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaSabado"
+            android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/filaMiercoles2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaMartes2"
-        android:orientation="horizontal">
+            <CheckBox
+                android:id="@+id/checkDomingo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Domingo" />
 
-        <CheckBox
-            android:id="@+id/checkMiercoles2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Miercoles" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
+            <EditText
+                android:id="@+id/iniDomingo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
 
-        <EditText
-            android:id="@+id/iniMiercoles2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
+            <EditText
+                android:id="@+id/finDomingo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/finMiercoles2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaJueves2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaMiercoles2"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkJueves2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Jueves" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniJueves2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finJueves2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaViernes2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaJueves2"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkViernes2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Viernes" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniViernes2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finViernes2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaSabado2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaViernes2"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkSabado2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Sabado" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniSabado2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finSabado2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaDomingo2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/filaSabado2"
-        android:orientation="horizontal">
-
-        <CheckBox
-            android:id="@+id/checkDomingo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Domingo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/checkLunes"
-            android:layout_toRightOf="@+id/checkLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Ini" />
-
-        <EditText
-            android:id="@+id/iniDomingo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/textfin1"
-            android:layout_centerHorizontal="true"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@+id/finLunes"
-            android:layout_columnWeight="1"
-            android:layout_marginLeft="25dp"
-            android:layout_rowWeight="1"
-            android:layout_toEndOf="@+id/finLunes"
-            android:layout_toRightOf="@+id/finLunes"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:text="Fin" />
-
-        <EditText
-            android:id="@+id/finDomingo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="6dp"
-            android:layout_toEndOf="@+id/textini1"
-            android:layout_toRightOf="@+id/textini1"
-            android:layout_weight="1"
-            android:gravity="fill"
-            android:inputType="time" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/filaEnviar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/filaDomingo2"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/botonEnviar"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/cabeceraInvierno"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/filaDomingo"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="34dp"
-            android:layout_weight="1"
-            android:text="Enviar" />
-    </LinearLayout>
+            android:orientation="horizontal">
 
-</RelativeLayout>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text="Configuracion de Invierno" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaLunes2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/cabeceraInvierno"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkLunes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Lunes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniLunes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finLunes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaMartes2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaLunes2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkMartes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Martes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniMartes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finMartes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaMiercoles2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaMartes2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkMiercoles2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Miercoles" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniMiercoles2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finMiercoles2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaJueves2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaMiercoles2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkJueves2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Jueves" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniJueves2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finJueves2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaViernes2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaJueves2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkViernes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Viernes" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniViernes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finViernes2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaSabado2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaViernes2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkSabado2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Sabado" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniSabado2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finSabado2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaDomingo2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/filaSabado2"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/checkDomingo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Domingo" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/checkLunes"
+                android:layout_toRightOf="@+id/checkLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Ini" />
+
+            <EditText
+                android:id="@+id/iniDomingo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textfin1"
+                android:layout_centerHorizontal="true"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/finLunes"
+                android:layout_columnWeight="1"
+                android:layout_marginLeft="25dp"
+                android:layout_rowWeight="1"
+                android:layout_toEndOf="@+id/finLunes"
+                android:layout_toRightOf="@+id/finLunes"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:text="Fin" />
+
+            <EditText
+                android:id="@+id/finDomingo2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/textini1"
+                android:layout_toRightOf="@+id/textini1"
+                android:layout_weight="1"
+                android:gravity="fill"
+                android:inputType="time" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/filaEnviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/filaDomingo2"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/botonEnviar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/filaDomingo"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="34dp"
+                android:layout_weight="1"
+                android:text="Enviar" />
+        </LinearLayout>
+
+    </RelativeLayout>
 </ScrollView>
 
