@@ -17,13 +17,15 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <EditText
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text="Configuracion de Verano" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -37,57 +39,25 @@
                 android:id="@+id/checkLunes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="0dp"
                 android:layout_weight="1"
+                android:padding="0dp"
                 android:text="Lunes" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/checkLunes"
-                android:layout_toRightOf="@+id/checkLunes"
                 android:layout_weight="1"
-                android:gravity="fill"
-                android:text="Ini" />
-
-            <EditText
-                android:id="@+id/iniLunes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textfin1"
-                android:layout_centerHorizontal="true"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_rowWeight="1"
-                android:layout_weight="1"
-                android:gravity="fill"
-                android:inputType="time" />
+                android:ems="10"
+                android:text="00:00" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/finLunes"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_rowWeight="1"
-                android:layout_toEndOf="@+id/finLunes"
-                android:layout_toRightOf="@+id/finLunes"
                 android:layout_weight="1"
-                android:gravity="fill"
-                android:text="Fin" />
+                android:ems="10"
+                android:text="00:00" />
 
-            <EditText
-                android:id="@+id/finLunes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="6dp"
-                android:layout_toEndOf="@+id/textini1"
-                android:layout_toRightOf="@+id/textini1"
-                android:layout_weight="1"
-                android:gravity="fill"
-                android:inputType="time" />
         </LinearLayout>
 
         <LinearLayout
@@ -99,63 +69,32 @@
             android:layout_below="@+id/filaLunes"
             android:layout_marginTop="6dp"
             android:layout_weight="1"
-            android:orientation="horizontal">
+            android:dividerPadding="5dp"
+            android:orientation="horizontal"
+            android:showDividers="middle">
 
             <CheckBox
                 android:id="@+id/checkMartes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Martes" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/checkLunes"
-                android:layout_toRightOf="@+id/checkLunes"
                 android:layout_weight="1"
-                android:gravity="fill"
-                android:text="Ini" />
-
-            <EditText
-                android:id="@+id/iniMartes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textfin1"
-                android:layout_centerHorizontal="true"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_rowWeight="1"
-                android:layout_weight="1"
-                android:gravity="fill"
-                android:inputType="time" />
+                android:ems="10"
+                android:text="00:00" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/finLunes"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="25dp"
-                android:layout_rowWeight="1"
-                android:layout_toEndOf="@+id/finLunes"
-                android:layout_toRightOf="@+id/finLunes"
                 android:layout_weight="1"
-                android:gravity="fill"
-                android:text="Fin" />
+                android:ems="10"
+                android:text="00:00" />
 
-            <EditText
-                android:id="@+id/finMartes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="6dp"
-                android:layout_toEndOf="@+id/textini1"
-                android:layout_toRightOf="@+id/textini1"
-                android:layout_weight="1"
-                android:gravity="fill"
-                android:inputType="time" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -495,7 +434,7 @@
             android:layout_below="@+id/filaDomingo"
             android:orientation="horizontal">
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

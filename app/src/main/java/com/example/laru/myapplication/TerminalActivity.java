@@ -14,17 +14,26 @@ import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TimePicker;
+
+import java.sql.Time;
+import java.text.DecimalFormat;
+import java.util.Calendar;
+import android.app.TimePickerDialog;
 
 
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
 import com.macroyau.blue2serial.BluetoothSerial;
 import com.macroyau.blue2serial.BluetoothSerialListener;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -48,6 +57,8 @@ public class TerminalActivity extends AppCompatActivity
 
 
     private Button sendButton;
+    private RelativeLayout mainLayout;
+    private ArrayList<TimePicker> timepickers = new ArrayList<TimePicker>();
 
 
     private MenuItem actionConnect, actionDisconnect;
@@ -62,63 +73,101 @@ public class TerminalActivity extends AppCompatActivity
         // Find UI views and set listeners
 
         sendButton = (Button) findViewById(R.id.botonEnviar);
+        mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+
+        ArrayList<Object> allInputs = new ArrayList<Object>();
+        ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
+
+        // Get all linearLayouts inside our main relative layout
+
+        for( int i = 0; i < mainLayout.getChildCount()-1; i++ ) {
+            if(mainLayout.getChildAt(i) instanceof LinearLayout) {
+                linLayouts.add((LinearLayout)mainLayout.getChildAt(i));
+            }
+
+        }
+
+        // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
+
+
+        for(int i=0 ; i<linLayouts.size();i++) {
+
+            for (int j = 0; j < linLayouts.get(i).getChildCount(); j++) {
+
+
+                TextView picker = null;
+                String hora = "00:00";
+                if (linLayouts.get(i).getChildAt(j) instanceof TextView) picker = (TextView) linLayouts.get(i).getChildAt(j);
+
+                if (picker != null) {
+
+                    picker.setOnClickListener(new View.OnClickListener() {
+
+                        @Override
+                        public void onClick(View v) {
+                            // TODO Auto-generated method stub
+                            Calendar mcurrentTime = Calendar.getInstance();
+                            int hour = mcurrentTime.get(Calendar.HOUR_OF_DAY);
+                            int minute = mcurrentTime.get(Calendar.MINUTE);
+
+                            TimePickerDialog mTimePicker;
+                            mTimePicker = new TimePickerDialog(TerminalActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                                @Override
+                                public void onTimeSet(TimePicker timePicker, int selectedHour, int selectedMinute) {
+                                    String hora = new DecimalFormat("00").format(selectedHour);
+                                    String minuto = new DecimalFormat("00").format(selectedMinute);
+                                    hora = guardar(hora, minuto);
+                                    picker.setText(hora);
+                                }
+                            }, hour, minute, true);
+                            mTimePicker.setTitle("Select Time");
+                            mTimePicker.show();
+
+                        }
+                    });
+
+                }
+
+            }
+        }
+
+
+
 
 
         sendButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
+
                 ArrayList<Object> allInputs = new ArrayList<Object>();
                 String trama ="##V#";
                 String tramaFormateada="##V#";
-                EditText iniLunes = (EditText) findViewById(R.id.iniLunes);
-                RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+                ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
+
+                // Get all linearLayouts inside our main relative layout
+
+                for( int i = 0; i < mainLayout.getChildCount()-1; i++ ) {
+                    if(mainLayout.getChildAt(i) instanceof LinearLayout) {
+                        linLayouts.add((LinearLayout)mainLayout.getChildAt(i));
+                    }
+
+                }
+
+                // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
+
+                for(int i=0 ; i<linLayouts.size();i++) {
+
+                    for( int j = 0; j < linLayouts.get(i).getChildCount(); j++ ) {
+
+                        if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) allInputs.add((CheckBox) linLayouts.get(i).getChildAt(j));
+
+                        if (linLayouts.get(i).getChildAt(j) instanceof TimePicker)
+                            allInputs.add((TimePicker) linLayouts.get(i).getChildAt(j));
+                    }
+
+                }
 
 
-                /*
-                allInputs.add((CheckBox) findViewById(R.id.checkLunes));
-                allInputs.add((EditText) findViewById(R.id.iniLunes));
-                allInputs.add ((EditText) findViewById(R.id.finLunes));
-                allInputs.add((CheckBox) findViewById(R.id.checkMartes));
-                allInputs.add ((EditText) findViewById(R.id.iniMartes));
-                allInputs.add ((EditText) findViewById(R.id.finMartes));
-                allInputs.add((CheckBox) findViewById(R.id.checkMiercoles));
-                allInputs.add ((EditText) findViewById(R.id.iniMiercoles));
-                allInputs.add ((EditText) findViewById(R.id.finMiercoles));
-                allInputs.add((CheckBox) findViewById(R.id.checkJueves));
-                allInputs.add ((EditText) findViewById(R.id.iniJueves));
-                allInputs.add ((EditText) findViewById(R.id.finJueves));
-                allInputs.add((CheckBox) findViewById(R.id.checkViernes));
-                allInputs.add ((EditText) findViewById(R.id.iniViernes));
-                allInputs.add ((EditText) findViewById(R.id.finViernes));
-                allInputs.add((CheckBox) findViewById(R.id.checkSabado));
-                allInputs.add ((EditText) findViewById(R.id.iniSabado));
-                allInputs.add ((EditText) findViewById(R.id.finSabado));
-                allInputs.add((CheckBox) findViewById(R.id.checkDomingo));
-                allInputs.add ((EditText) findViewById(R.id.iniDomingo));
-                allInputs.add ((EditText) findViewById(R.id.finDomingo));
-                allInputs.add((CheckBox) findViewById(R.id.checkLunes2));
-                allInputs.add((EditText) findViewById(R.id.iniLunes2));
-                allInputs.add ((EditText) findViewById(R.id.finLunes2));
-                allInputs.add((CheckBox) findViewById(R.id.checkMartes2));
-                allInputs.add ((EditText) findViewById(R.id.iniMartes2));
-                allInputs.add ((EditText) findViewById(R.id.finMartes2));
-                allInputs.add((CheckBox) findViewById(R.id.checkMiercoles2));
-                allInputs.add ((EditText) findViewById(R.id.iniMiercoles2));
-                allInputs.add ((EditText) findViewById(R.id.finMiercoles2));
-                allInputs.add((CheckBox) findViewById(R.id.checkJueves2));
-                allInputs.add ((EditText) findViewById(R.id.iniJueves2));
-                allInputs.add ((EditText) findViewById(R.id.finJueves2));
-                allInputs.add((CheckBox) findViewById(R.id.checkViernes2));
-                allInputs.add ((EditText) findViewById(R.id.iniViernes2));
-                allInputs.add ((EditText) findViewById(R.id.finViernes2));
-                allInputs.add((CheckBox) findViewById(R.id.checkSabado2));
-                allInputs.add ((EditText) findViewById(R.id.iniSabado2));
-                allInputs.add ((EditText) findViewById(R.id.finSabado2));
-                allInputs.add((CheckBox) findViewById(R.id.checkDomingo2));
-                allInputs.add ((EditText) findViewById(R.id.iniDomingo2));
-                allInputs.add ((EditText) findViewById(R.id.finDomingo2));
-
-                */
 
                 Boolean checked = false;
                 int checksCounter = 0;
@@ -143,21 +192,22 @@ public class TerminalActivity extends AppCompatActivity
                                 /*trama += "1";
                                 tramaFormateada += "1";*/
                         }
-                    }
-                     else {
-                        EditText subtrama = (EditText) allInputs.get(i);
-                        String subtramaString = "";
-                        subtramaString+=subtrama.getText();
-                        if(checked && subtramaString!="") {
+                    } else {
+                        TimePicker tiempo = (TimePicker) allInputs.get(i);
+                        String subtrama = "";
+                        subtrama+=tiempo.getCurrentHour();
+                        subtrama+=tiempo.getCurrentMinute();
+                        if(checked && subtrama!="") {
                             trama+="1";
                             tramaFormateada+="1";
                             checked=false;
                         }
-                        trama+= subtrama.getText();
-                        tramaFormateada+= subtrama.getText();
+                        trama+= subtrama;
+                        tramaFormateada+= subtrama;
 
                     }
                 }
+
                 trama+="*##";
                 tramaFormateada+="*##";
 
@@ -172,6 +222,7 @@ public class TerminalActivity extends AppCompatActivity
                 AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
                 alertDialog.setTitle("Alert");
                 alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
+                //alertDialog.setMessage("Inputs capturados : " +allInputs.size());
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
@@ -188,30 +239,15 @@ public class TerminalActivity extends AppCompatActivity
 
 
 
-
-
-        /*
-        etSend = (EditText) findViewById(R.id.et_send);
-
-        etSend.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEND) {
-                    String send = etSend.getText().toString().trim();
-                    if (send.length() > 0) {
-                        bluetoothSerial.write(send, crlf);
-                        etSend.setText("");
-                    }
-                }
-                return false;
-            }
-        });
-        */
-
         // Create a new instance of BluetoothSerial
         bluetoothSerial = new BluetoothSerial(this, this);
 
 
+    }
+
+    public String guardar ( String hora , String minuto) {
+        String resultado = hora+":"+minuto;
+        return resultado;
     }
 
 
