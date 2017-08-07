@@ -12,9 +12,60 @@
         tools:context=".TerminalActivity">
 
         <LinearLayout
+            android:id="@+id/cabeceraBotones"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Funciones basicas"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Botonera"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cabeceraBotones"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/BombaON"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Encender Bomba" />
+
+            <Button
+                android:id="@+id/BombaOFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Apagar Bomba" />
+
+            <Button
+                android:id="@+id/ProgFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Progamar Fecha" />
+
+            <Button
+                android:id="@+id/ProgHora"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Programar Hora" />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/cabeceraVerano"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/Botonera"
             android:orientation="horizontal">
 
 
