@@ -28,11 +28,13 @@ import java.text.DecimalFormat;
 import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.view.View.OnClickListener;
+import android.util.Log;
 
 
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
 import com.macroyau.blue2serial.BluetoothSerial;
 import com.macroyau.blue2serial.BluetoothSerialListener;
+
 
 import org.w3c.dom.Text;
 
@@ -59,7 +61,14 @@ public class TerminalActivity extends AppCompatActivity
 
     private Button sendButton;
     private RelativeLayout mainLayout;
-    private ArrayList<TimePicker> timepickers = new ArrayList<TimePicker>();
+    private ArrayList<Object> allInputs = new ArrayList<Object>();
+    private ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
+    private ArrayList<TextView> timeInputs = new ArrayList<TextView>();
+    private ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
+
+    private String count ="";
+    private int count2 = 0;
+
 
 
     private MenuItem actionConnect, actionDisconnect;
@@ -103,8 +112,9 @@ public class TerminalActivity extends AppCompatActivity
         sendButton = (Button) findViewById(R.id.botonEnviar);
         mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
 
-        ArrayList<Object> allInputs = new ArrayList<Object>();
-        ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
+
+        //ArrayList<Object> allInputs = new ArrayList<Object>();
+        //ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
 
         // Get all linearLayouts inside our main relative layout
 
@@ -127,9 +137,15 @@ public class TerminalActivity extends AppCompatActivity
                 String hora = "00:00";
                 if (linLayouts.get(i).getChildAt(j) instanceof TextView) picker = (TextView) linLayouts.get(i).getChildAt(j);
 
+
                 if (picker != null) {
 
-                    picker.setOnClickListener(listener);
+                    if(!(picker instanceof CheckBox) && picker.getText().length()<4){
+                        picker.setOnClickListener(listener);
+                        timeInputs.add(picker);
+                        count+= picker.getClass();
+                        count2++;
+                    }
 
 
                 }
@@ -145,10 +161,10 @@ public class TerminalActivity extends AppCompatActivity
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
 
-                ArrayList<Object> allInputs = new ArrayList<Object>();
+                //ArrayList<Object> allInputs = new ArrayList<Object>();
                 String trama ="##V#";
                 String tramaFormateada="##V#";
-                ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
+                //ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
 
                 // Get all linearLayouts inside our main relative layout
 
@@ -160,69 +176,70 @@ public class TerminalActivity extends AppCompatActivity
                 }
 
                 // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
+                TextView tv = null;
 
                 for(int i=0 ; i<linLayouts.size();i++) {
 
                     for( int j = 0; j < linLayouts.get(i).getChildCount(); j++ ) {
 
-                        if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) allInputs.add((CheckBox) linLayouts.get(i).getChildAt(j));
+                        if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) checkBoxes.add((CheckBox) linLayouts.get(i).getChildAt(j));
 
-                        if (linLayouts.get(i).getChildAt(j) instanceof TextView)
-                            allInputs.add((TextView) linLayouts.get(i).getChildAt(j));
+                        if (linLayouts.get(i).getChildAt(j) instanceof TextView && (!(linLayouts.get(i).getChildAt(j) instanceof CheckBox)))
+                            tv = (TextView) linLayouts.get(i).getChildAt(j);
+                            if (tv.getText().length() <4 )allInputs.add(tv);
                     }
 
                 }
+
 
 
 
                 Boolean checked = false;
                 int checksCounter = 0;
+                CheckBox currentCheck = null;
 
 
-                for(int i=0 ; i<allInputs.size(); i++) {
+                for(int i=0 ; i<timeInputs.size(); i++) {
 
-                    if (i==21) {
+                    if (i==14) {
                         trama += "I#";
                         tramaFormateada += "I#";
                     }
 
-                    if (allInputs.get(i) instanceof CheckBox) {
+                    if (i==0 || i%2 == 0) {
+                        if (i == 0) {
+                            currentCheck = checkBoxes.get(0);
+                        } else {
+                            currentCheck = checkBoxes.get(i/2);
+                        }
                         tramaFormateada+="-";
-                        CheckBox check = (CheckBox) allInputs.get(i);
-                        if (check.isChecked() == false) {
+                        if(currentCheck.isChecked() == false) {
                             trama+="000000000";
                             tramaFormateada+="000000000";
-                            i+=2;
+                            i+=1;
                         } else {
-                                checked=true;
-                                /*trama += "1";
-                                tramaFormateada += "1";*/
+                            trama+="1";
+                            tramaFormateada+="1";
                         }
-                    } else {
+                    }
 
-                        TextView tiempo = (TextView) allInputs.get(i);
-
-                        if(tiempo.getId()+""=="veranoSeparador" || tiempo.getId()+"" == "inviernoSeparador") {
-                            i++;
-                            continue;
-                        }
-
+                        TextView tiempo = (TextView) timeInputs.get(i);
                         String subtrama = "";
                         subtrama+=tiempo.getText().toString().replaceAll("[^0-9]","");
 
-                        if(checked && subtrama!="___") {
-                            trama+="1";
-                            tramaFormateada+="1";
-                            checked=false;
+                        if(currentCheck.isChecked() && subtrama!="___") {
+                            trama+= subtrama;
+                            tramaFormateada+= subtrama;
                         }
-                        trama+= subtrama;
-                        tramaFormateada+= subtrama;
+
 
                     }
-                }
+
 
                 trama+="*##";
                 tramaFormateada+="*##";
+
+
 
 
                 if (trama.length() > 0) {
@@ -234,8 +251,9 @@ public class TerminalActivity extends AppCompatActivity
 
                 AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
                 alertDialog.setTitle("Alert");
-                //alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
-                alertDialog.setMessage("Inputs capturados : " +allInputs); // todo Se repiten los checkboxes en el array con los TextView, investigar
+                alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
+                //alertDialog.setMessage("Inputs capturados : " +allInputs); // todo Se repiten los checkboxes en el array con los TextView, investigar
+                //alertDialog.setMessage("textview encontrados : " +count2 + count);
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
