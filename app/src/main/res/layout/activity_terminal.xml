@@ -7,7 +7,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/mainLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:focusableInTouchMode="true"
         tools:context=".TerminalActivity">
 
@@ -24,7 +24,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPersonName"
                 android:text="Configuracion de Verano" />
 
         </LinearLayout>
@@ -34,27 +33,31 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/cabeceraVerano"
+            android:weightSum="4"
             android:orientation="horizontal">
 
             <CheckBox
                 android:id="@+id/checkLunes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="0dp"
+                android:layout_weight="2"
                 android:text="Lunes" />
 
             <TextView
-                android:layout_width="50dp"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="0dp"
                 android:ems="10"
                 android:text="___" />
 
@@ -68,7 +71,7 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaLunes"
             android:layout_marginTop="6dp"
-            android:layout_weight="1"
+            android:weightSum="4"
             android:dividerPadding="5dp"
             android:orientation="horizontal"
             android:showDividers="middle">
@@ -81,14 +84,14 @@
                 android:text="Martes" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -101,6 +104,7 @@
             android:id="@+id/filaMiercoles"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaMartes"
@@ -110,18 +114,18 @@
                 android:id="@+id/checkMiercoles"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Miercoles" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -133,6 +137,7 @@
             android:id="@+id/filaJueves"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaMiercoles"
@@ -142,18 +147,18 @@
                 android:id="@+id/checkJueves"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Jueves" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -165,6 +170,7 @@
             android:id="@+id/filaViernes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaJueves"
@@ -174,18 +180,18 @@
                 android:id="@+id/checkViernes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Viernes" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -197,6 +203,7 @@
             android:id="@+id/filaSabado"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaViernes"
@@ -206,18 +213,18 @@
                 android:id="@+id/checkSabado"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Sabado" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -229,6 +236,7 @@
             android:id="@+id/filaDomingo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaSabado"
@@ -238,18 +246,18 @@
                 android:id="@+id/checkDomingo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Domingo" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -278,6 +286,7 @@
             android:id="@+id/filaLunes2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/cabeceraInvierno"
@@ -287,18 +296,18 @@
                 android:id="@+id/checkLunes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Lunes" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -310,6 +319,7 @@
             android:id="@+id/filaMartes2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaLunes2"
@@ -319,18 +329,18 @@
                 android:id="@+id/checkMartes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Martes" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -342,6 +352,7 @@
             android:id="@+id/filaMiercoles2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaMartes2"
@@ -351,18 +362,18 @@
                 android:id="@+id/checkMiercoles2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Miercoles" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -374,6 +385,7 @@
             android:id="@+id/filaJueves2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaMiercoles2"
@@ -383,18 +395,18 @@
                 android:id="@+id/checkJueves2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Jueves" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -406,6 +418,7 @@
             android:id="@+id/filaViernes2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaJueves2"
@@ -415,18 +428,18 @@
                 android:id="@+id/checkViernes2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Viernes" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -438,6 +451,7 @@
             android:id="@+id/filaSabado2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaViernes2"
@@ -447,18 +461,18 @@
                 android:id="@+id/checkSabado2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Sabado" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
@@ -470,6 +484,7 @@
             android:id="@+id/filaDomingo2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:weightSum="4"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_below="@+id/filaSabado2"
@@ -479,18 +494,18 @@
                 android:id="@+id/checkDomingo2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:text="Domingo" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"

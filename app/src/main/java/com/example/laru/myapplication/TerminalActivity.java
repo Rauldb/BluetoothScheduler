@@ -162,8 +162,8 @@ public class TerminalActivity extends AppCompatActivity
                 // Code here executes on main thread after user presses button
 
                 //ArrayList<Object> allInputs = new ArrayList<Object>();
-                String trama ="##V#";
-                String tramaFormateada="##V#";
+                String trama ="*#P\r";
+                String tramaFormateada="*#P\r";
                 //ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
 
                 // Get all linearLayouts inside our main relative layout
@@ -201,10 +201,6 @@ public class TerminalActivity extends AppCompatActivity
 
                 for(int i=0 ; i<timeInputs.size(); i++) {
 
-                    if (i==14) {
-                        trama += "I#";
-                        tramaFormateada += "I#";
-                    }
 
                     if (i==0 || i%2 == 0) {
                         if (i == 0) {
@@ -227,17 +223,21 @@ public class TerminalActivity extends AppCompatActivity
                         String subtrama = "";
                         subtrama+=tiempo.getText().toString().replaceAll("[^0-9]","");
 
-                        if(currentCheck.isChecked() && subtrama!="___") {
+                        if(currentCheck.isChecked() && subtrama!="") {
                             trama+= subtrama;
                             tramaFormateada+= subtrama;
+                        }
+                        if(currentCheck.isChecked() && subtrama=="") {
+                            trama+="0000";
+                            tramaFormateada+="0000";
                         }
 
 
                     }
 
 
-                trama+="*##";
-                tramaFormateada+="*##";
+                trama+="\r";
+                tramaFormateada+="\r";
 
 
 
@@ -251,8 +251,8 @@ public class TerminalActivity extends AppCompatActivity
 
                 AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
                 alertDialog.setTitle("Alert");
-                alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
-                //alertDialog.setMessage("Inputs capturados : " +allInputs); // todo Se repiten los checkboxes en el array con los TextView, investigar
+                //alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
+                //alertDialog.setMessage("Inputs capturados : " +allInputs);
                 //alertDialog.setMessage("textview encontrados : " +count2 + count);
                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                         new DialogInterface.OnClickListener() {
@@ -428,7 +428,7 @@ public class TerminalActivity extends AppCompatActivity
                         finish();
                     }
                 })
-                .setCancelable(true)
+                .setCancelable(false)
                 .show();
     }
 
