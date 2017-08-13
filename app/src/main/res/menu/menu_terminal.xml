@@ -11,10 +11,9 @@
         android:visible="false"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_crlf"
-        android:title="@string/action_crlf"
-        android:checkable="true"
-        android:checked="false"
+    <item android:id="@+id/action_setTime"
+        android:title="Sincronizar hora y fecha"
+        android:checkable="false"
         app:showAsAction="never" />
 
 </menu>

@@ -8,27 +8,24 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.KeyEvent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.inputmethod.EditorInfo;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Button;
 import android.view.View;
-import android.widget.RelativeLayout;
 import android.widget.TimePicker;
-
-import java.sql.Time;
 import java.text.DecimalFormat;
 import java.util.Calendar;
 import android.app.TimePickerDialog;
 import android.view.View.OnClickListener;
-import android.util.Log;
+import java.text.SimpleDateFormat;
+import android.os.Handler;
+
+
 
 
 import com.macroyau.blue2serial.BluetoothDeviceListDialog;
@@ -36,9 +33,8 @@ import com.macroyau.blue2serial.BluetoothSerial;
 import com.macroyau.blue2serial.BluetoothSerialListener;
 
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  *
@@ -49,6 +45,8 @@ import java.util.ArrayList;
 
 
 // POLISHED BRANCH
+
+
 
 
 public class TerminalActivity extends AppCompatActivity
@@ -68,12 +66,68 @@ public class TerminalActivity extends AppCompatActivity
 
     private String count ="";
     private int count2 = 0;
+    private int datacount = 0;
+    final ArrayList<String> datos = new ArrayList<>();
+    String trama ="";
+
+    final Handler handler = new Handler();
+    public Runnable sincronizaHora = new Runnable()
+    {
+
+        @Override
+        public void run()
+        {
+            // type code here which will loop with the given delay
+
+
+
+            //if you want to end the runnable type this in the condition
+            if(datacount==4) {
+
+                handler.removeCallbacks(this);
+                datacount=0;
+                return;
+
+            }
+            //Log.i("cuenta: ", datos.get(datacount));
+            bluetoothSerial.write(datos.get(datacount) , false);
+            datacount++;
+            //delay for the runnable
+            handler.postDelayed(sincronizaHora, 2000);
+        }
+    };
+
+    public Runnable enviaHorario = new Runnable()
+    {
+
+        @Override
+        public void run()
+        {
+            switch (datacount){
+                case 0:
+                    //Log.i("Hola", "esto es un salto de linea\n");
+                    bluetoothSerial.write("*#P" , false);
+                    datacount++;
+                    break;
+                case 1:
+                    //Log.i("trama: ", trama);
+                    bluetoothSerial.write(trama, false);
+                    datacount++;
+                    break;
+                case 2:
+                    handler.removeCallbacks(this);
+                    datacount = 0;
+                    return;
+            }
+            handler.postDelayed(enviaHorario, 2000);
+        }
+    };
 
 
 
     private MenuItem actionConnect, actionDisconnect;
 
-    private boolean crlf = false;
+
 
     private OnClickListener listener    =   new OnClickListener() {
         @Override
@@ -99,6 +153,7 @@ public class TerminalActivity extends AppCompatActivity
 
         }
     };
+
 
 
 
@@ -162,8 +217,8 @@ public class TerminalActivity extends AppCompatActivity
                 // Code here executes on main thread after user presses button
 
                 //ArrayList<Object> allInputs = new ArrayList<Object>();
-                String trama ="*#P\r";
-                String tramaFormateada="*#P\r";
+
+                String tramaFormateada="*#P\n";
                 //ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
 
                 // Get all linearLayouts inside our main relative layout
@@ -243,24 +298,14 @@ public class TerminalActivity extends AppCompatActivity
 
 
                 if (trama.length() > 0) {
-                    bluetoothSerial.write(trama, crlf);
+                    handler.post(enviaHorario);
                 }
 
                 // ALERT CON LA TRAMA Y TRAMA FORMATEADA PARA COMPROBAR
 
 
-                AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
-                alertDialog.setTitle("Alert");
-                //alertDialog.setMessage("Trama enviada : "+trama +" \n Trama formateada para revisar : "+tramaFormateada);
-                //alertDialog.setMessage("Inputs capturados : " +allInputs);
-                //alertDialog.setMessage("textview encontrados : " +count2 + count);
-                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        });
-                alertDialog.show();
+                //Log.i("Trama enviada :", ""+trama +" \n Trama formateada para revisar : "+tramaFormateada);
+
 
 
 
@@ -337,9 +382,63 @@ public class TerminalActivity extends AppCompatActivity
         } else if (id == R.id.action_disconnect) {
             bluetoothSerial.stop();
             return true;
-        } else if (id == R.id.action_crlf) {
-            crlf = !item.isChecked();
-            item.setChecked(crlf);
+        }else if (id == R.id.action_setTime){
+
+            Calendar mcurrentTime = Calendar.getInstance(Locale.FRANCE);
+            int weekDay = mcurrentTime.get(Calendar.DAY_OF_WEEK);
+            int fixedDay;
+            if(weekDay == 1) {
+                fixedDay = 7;
+            } else {
+                fixedDay = weekDay -1;
+            }
+            SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyHHmm");
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HHmm");
+            String fecha = "0"+fixedDay+formatoFecha.format(mcurrentTime.getTime());
+            String hora = formatoHora.format(mcurrentTime.getTime());
+            datos.add("*#D");
+            datos.add(fecha);
+            datos.add("*#T");
+            datos.add(hora);
+
+            handler.post(sincronizaHora);
+
+
+
+
+            /*final Handler handler = new Handler();
+            final Runnable task = new Runnable() {
+                @Override
+                public void run() {
+                    //code you want to run every second
+                    for(int i= 0 ; i<datos.size() ; i++) {
+                        //bluetoothSerial.write(datos.get(i));
+                        Log.i("Dato" , datos.get(i));
+                        handler.postDelayed(this, 1000);
+                    }
+                    handler.removeCallbacks(this);
+                }
+            }; handler.postDelayed( task , 1000);
+            */
+
+
+
+
+            /*
+
+            AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
+            alertDialog.setTitle("Alert");
+            alertDialog.setMessage("La fecha es :\n"+fecha+"\nLa hora es:\n"+hora);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+            */
+
             return true;
         }
 
@@ -428,7 +527,7 @@ public class TerminalActivity extends AppCompatActivity
                         finish();
                     }
                 })
-                .setCancelable(false)
+                .setCancelable(true)
                 .show();
     }
 
