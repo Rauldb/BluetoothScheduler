@@ -5,6 +5,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -64,11 +65,10 @@ public class TerminalActivity extends AppCompatActivity
     private ArrayList<TextView> timeInputs = new ArrayList<TextView>();
     private ArrayList<CheckBox> checkBoxes = new ArrayList<CheckBox>();
 
-    private String count ="";
-    private int count2 = 0;
     private int datacount = 0;
-    final ArrayList<String> datos = new ArrayList<>();
     String trama ="";
+    final ArrayList<String> datos = new ArrayList<>();
+
 
     final Handler handler = new Handler();
     public Runnable sincronizaHora = new Runnable()
@@ -123,6 +123,91 @@ public class TerminalActivity extends AppCompatActivity
         }
     };
 
+    private void saveState () {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        for(int i = 0 ; i<timeInputs.size() ; i++) {
+            editor.putString(""+timeInputs.get(i).getId() , timeInputs.get(i).getText().toString());
+        }
+        editor.apply();
+    }
+
+    private void loadState () {
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
+        for(int i = 0 ; i<timeInputs.size() ; i++) {
+            timeInputs.get(i).setText(pref.getString("" + timeInputs.get(i).getId(), "___"));
+        }
+    }
+
+    private void getInputs() {
+
+        timeInputs.clear();
+        checkBoxes.clear();
+        linLayouts.clear();
+
+        for( int i = 0; i < mainLayout.getChildCount()-1; i++ ) {
+            if(mainLayout.getChildAt(i) instanceof LinearLayout) {
+                linLayouts.add((LinearLayout)mainLayout.getChildAt(i));
+            }
+
+        }
+
+        // Iterate through all elements inside linearlayout and set listeners only on timepickers
+
+        // Get timepickers
+
+        for(int i=0 ; i<linLayouts.size();i++) {
+
+            for (int j = 0; j < linLayouts.get(i).getChildCount(); j++) {
+
+
+                TextView picker = null;
+                if (linLayouts.get(i).getChildAt(j) instanceof TextView) picker = (TextView) linLayouts.get(i).getChildAt(j);
+
+
+                if (picker != null) {
+
+                    if(!(picker instanceof CheckBox) && picker.getText().length()<6){
+                        picker.setOnClickListener(listener);
+                        timeInputs.add(picker);
+                        Log.i("picker : " , picker.toString());
+                    }
+
+
+                }
+
+            }
+        }
+
+        Log.i("cantidadtimeinputs: " , ""+timeInputs.size());
+
+
+        // Get checkboxes
+
+
+
+        // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
+
+        for(int i=0 ; i<linLayouts.size();i++) {
+
+            for( int j = 0; j < linLayouts.get(i).getChildCount(); j++ ) {
+
+                if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) checkBoxes.add((CheckBox) linLayouts.get(i).getChildAt(j));
+
+
+            }
+
+        }
+
+
+
+
+    }
+
+
+
+
+
 
 
     private MenuItem actionConnect, actionDisconnect;
@@ -146,6 +231,7 @@ public class TerminalActivity extends AppCompatActivity
                     String minuto = new DecimalFormat("00").format(selectedMinute);
                     hora = guardar(hora, minuto);
                     picker.setText(hora);
+                    saveState();
                 }
             }, hour, minute, true);
             mTimePicker.setTitle("Select Time");
@@ -161,11 +247,15 @@ public class TerminalActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terminal);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
 
         // Find UI views and set listeners
 
         sendButton = (Button) findViewById(R.id.botonEnviar);
         mainLayout = (RelativeLayout) findViewById(R.id.mainLayout);
+        getInputs();
 
 
         //ArrayList<Object> allInputs = new ArrayList<Object>();
@@ -173,40 +263,15 @@ public class TerminalActivity extends AppCompatActivity
 
         // Get all linearLayouts inside our main relative layout
 
-        for( int i = 0; i < mainLayout.getChildCount()-1; i++ ) {
-            if(mainLayout.getChildAt(i) instanceof LinearLayout) {
-                linLayouts.add((LinearLayout)mainLayout.getChildAt(i));
-            }
-
-        }
-
-        // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
 
 
-        for(int i=0 ; i<linLayouts.size();i++) {
-
-            for (int j = 0; j < linLayouts.get(i).getChildCount(); j++) {
 
 
-                TextView picker = null;
-                String hora = "00:00";
-                if (linLayouts.get(i).getChildAt(j) instanceof TextView) picker = (TextView) linLayouts.get(i).getChildAt(j);
+
+        loadState();
 
 
-                if (picker != null) {
 
-                    if(!(picker instanceof CheckBox) && picker.getText().length()<4){
-                        picker.setOnClickListener(listener);
-                        timeInputs.add(picker);
-                        count+= picker.getClass();
-                        count2++;
-                    }
-
-
-                }
-
-            }
-        }
 
 
 
@@ -217,41 +282,12 @@ public class TerminalActivity extends AppCompatActivity
                 // Code here executes on main thread after user presses button
 
                 //ArrayList<Object> allInputs = new ArrayList<Object>();
-
+                trama="";
                 String tramaFormateada="*#P\n";
-                //ArrayList<LinearLayout> linLayouts = new ArrayList<LinearLayout>();
-
-                // Get all linearLayouts inside our main relative layout
-
-                for( int i = 0; i < mainLayout.getChildCount()-1; i++ ) {
-                    if(mainLayout.getChildAt(i) instanceof LinearLayout) {
-                        linLayouts.add((LinearLayout)mainLayout.getChildAt(i));
-                    }
-
-                }
-
-                // Iterate through all elements inside each linear layout and check for checkboxes and edittexts
-                TextView tv = null;
-
-                for(int i=0 ; i<linLayouts.size();i++) {
-
-                    for( int j = 0; j < linLayouts.get(i).getChildCount(); j++ ) {
-
-                        if( linLayouts.get(i).getChildAt(j) instanceof CheckBox ) checkBoxes.add((CheckBox) linLayouts.get(i).getChildAt(j));
-
-                        if (linLayouts.get(i).getChildAt(j) instanceof TextView && (!(linLayouts.get(i).getChildAt(j) instanceof CheckBox)))
-                            tv = (TextView) linLayouts.get(i).getChildAt(j);
-                            if (tv.getText().length() <4 )allInputs.add(tv);
-                    }
-
-                }
-
-
-
-
-                Boolean checked = false;
-                int checksCounter = 0;
                 CheckBox currentCheck = null;
+
+                getInputs();
+
 
 
                 for(int i=0 ; i<timeInputs.size(); i++) {
@@ -315,13 +351,16 @@ public class TerminalActivity extends AppCompatActivity
 
 
 
+
+
+
         // Create a new instance of BluetoothSerial
         bluetoothSerial = new BluetoothSerial(this, this);
 
 
     }
 
-    public String guardar ( String hora , String minuto) {
+    private String guardar ( String hora , String minuto) {
         String resultado = hora+":"+minuto;
         String resultadoLimpio = resultado.replaceAll("[^0-9]","");
         return resultadoLimpio;
@@ -404,40 +443,6 @@ public class TerminalActivity extends AppCompatActivity
 
             handler.post(sincronizaHora);
 
-
-
-
-            /*final Handler handler = new Handler();
-            final Runnable task = new Runnable() {
-                @Override
-                public void run() {
-                    //code you want to run every second
-                    for(int i= 0 ; i<datos.size() ; i++) {
-                        //bluetoothSerial.write(datos.get(i));
-                        Log.i("Dato" , datos.get(i));
-                        handler.postDelayed(this, 1000);
-                    }
-                    handler.removeCallbacks(this);
-                }
-            }; handler.postDelayed( task , 1000);
-            */
-
-
-
-
-            /*
-
-            AlertDialog alertDialog = new AlertDialog.Builder(TerminalActivity.this).create();
-            alertDialog.setTitle("Alert");
-            alertDialog.setMessage("La fecha es :\n"+fecha+"\nLa hora es:\n"+hora);
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-            alertDialog.show();
-            */
 
             return true;
         }

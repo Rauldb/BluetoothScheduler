@@ -45,20 +45,22 @@
                 android:text="Lunes" />
 
             <TextView
+                android:id="@+id/vlun1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:ems="10"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
+                android:layout_weight="1"
+                android:ems="10"
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vlun2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginLeft="0dp"
                 android:layout_marginRight="0dp"
+                android:layout_weight="1"
                 android:ems="10"
                 android:text="___" />
 
@@ -85,6 +87,7 @@
                 android:text="Martes" />
 
             <TextView
+                android:id="@+id/vmar1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -92,6 +95,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vmar2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -119,6 +123,7 @@
                 android:text="Miercoles" />
 
             <TextView
+                android:id="@+id/vmie1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -126,6 +131,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vmie2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -152,6 +158,7 @@
                 android:text="Jueves" />
 
             <TextView
+                android:id="@+id/vjue1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -159,6 +166,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vjue2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -185,6 +193,7 @@
                 android:text="Viernes" />
 
             <TextView
+                android:id="@+id/vvie1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -192,6 +201,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vvie2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -218,6 +228,7 @@
                 android:text="Sabado" />
 
             <TextView
+                android:id="@+id/vsab1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -225,6 +236,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vsab2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -251,6 +263,7 @@
                 android:text="Domingo" />
 
             <TextView
+                android:id="@+id/vdom1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -258,6 +271,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/vdom2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -301,6 +315,7 @@
                 android:text="Lunes" />
 
             <TextView
+                android:id="@+id/ilun1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -308,6 +323,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/ilun2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -334,6 +350,7 @@
                 android:text="Martes" />
 
             <TextView
+                android:id="@+id/imar1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -341,6 +358,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/imar2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -367,6 +385,7 @@
                 android:text="Miercoles" />
 
             <TextView
+                android:id="@+id/imie1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -374,6 +393,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/imie2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -400,6 +420,7 @@
                 android:text="Jueves" />
 
             <TextView
+                android:id="@+id/ijue1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -407,6 +428,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/ijue2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -433,6 +455,7 @@
                 android:text="Viernes" />
 
             <TextView
+                android:id="@+id/ivie1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -440,6 +463,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/ivie2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -466,6 +490,7 @@
                 android:text="Sabado" />
 
             <TextView
+                android:id="@+id/isab1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -473,6 +498,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/isab2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -499,6 +525,7 @@
                 android:text="Domingo" />
 
             <TextView
+                android:id="@+id/idom1"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -506,6 +533,7 @@
                 android:text="___" />
 
             <TextView
+                android:id="@+id/idom2"
                 android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
