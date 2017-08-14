@@ -473,7 +473,7 @@ public class TerminalActivity extends AppCompatActivity
             }
             SimpleDateFormat sdf = new SimpleDateFormat("ddMMyyHHmm");
             SimpleDateFormat formatoFecha = new SimpleDateFormat("ddMMyy");
-            SimpleDateFormat formatoHora = new SimpleDateFormat("HHmm");
+            SimpleDateFormat formatoHora = new SimpleDateFormat("HHmmss");
             String fecha = "0"+fixedDay+formatoFecha.format(mcurrentTime.getTime());
             String hora = formatoHora.format(mcurrentTime.getTime());
             datos.add("*#D");
