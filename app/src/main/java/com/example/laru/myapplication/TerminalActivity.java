@@ -123,21 +123,40 @@ public class TerminalActivity extends AppCompatActivity
         }
     };
 
-    private void saveState () {
+     private void saveTimeState() {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         for(int i = 0 ; i<timeInputs.size() ; i++) {
             editor.putString(""+timeInputs.get(i).getId() , timeInputs.get(i).getText().toString());
         }
+        for (int i = 0 ; i<checkBoxes.size() ; i++){
+            String id = ""+checkBoxes.get(i).getId();
+            editor.putBoolean( id , checkBoxes.get(i).isChecked() );
+            //Log.i("guardacheck"+i+":" , Boolean.toString(checkBoxes.get(i).isChecked()));
+
+        }
+
         editor.apply();
     }
 
     private void loadState () {
         SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
         for(int i = 0 ; i<timeInputs.size() ; i++) {
-            timeInputs.get(i).setText(pref.getString("" + timeInputs.get(i).getId(), "___"));
+            String id = ""+timeInputs.get(i).getId();
+            timeInputs.get(i).setText(pref.getString( id , "___"));
+        }
+
+
+        for (int i = 0 ; i<checkBoxes.size() ; i++){
+            String id = ""+checkBoxes.get(i).getId();
+            checkBoxes.get(i).setChecked(pref.getBoolean( id , true));
+            //Log.i("checkbox"+i+": " , Boolean.toString(pref.getBoolean(""+checkBoxes.get(i).getId() , false)));
+
+
         }
     }
+
+
 
     private void getInputs() {
 
@@ -168,9 +187,12 @@ public class TerminalActivity extends AppCompatActivity
                 if (picker != null) {
 
                     if(!(picker instanceof CheckBox) && picker.getText().length()<6){
-                        picker.setOnClickListener(listener);
+                        picker.setOnClickListener(timePickListener);
                         timeInputs.add(picker);
-                        Log.i("picker : " , picker.toString());
+                    }
+
+                    if(picker instanceof CheckBox) {
+                        picker.setOnClickListener(checkBoxListener);
                     }
 
 
@@ -179,7 +201,7 @@ public class TerminalActivity extends AppCompatActivity
             }
         }
 
-        Log.i("cantidadtimeinputs: " , ""+timeInputs.size());
+
 
 
         // Get checkboxes
@@ -212,9 +234,27 @@ public class TerminalActivity extends AppCompatActivity
 
     private MenuItem actionConnect, actionDisconnect;
 
+    private OnClickListener checkBoxListener = new OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+            SharedPreferences pref = getApplicationContext().getSharedPreferences("prefs", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
+
+            CheckBox check = (CheckBox) view;
+            String id = ""+check.getId();
+
+            editor.putBoolean( id , check.isChecked() );
+            //Log.i(id+":" , Boolean.toString(check.isChecked()));
+
+            editor.apply();
+
+        }
+    };
 
 
-    private OnClickListener listener    =   new OnClickListener() {
+
+    private OnClickListener timePickListener =   new OnClickListener() {
         @Override
         public void onClick(View v) {
             Calendar mcurrentTime = Calendar.getInstance();
@@ -231,7 +271,7 @@ public class TerminalActivity extends AppCompatActivity
                     String minuto = new DecimalFormat("00").format(selectedMinute);
                     hora = guardar(hora, minuto);
                     picker.setText(hora);
-                    saveState();
+                    saveTimeState();
                 }
             }, hour, minute, true);
             mTimePicker.setTitle("Select Time");
@@ -532,7 +572,7 @@ public class TerminalActivity extends AppCompatActivity
                         finish();
                     }
                 })
-                .setCancelable(true)
+                .setCancelable(false)
                 .show();
     }
 
